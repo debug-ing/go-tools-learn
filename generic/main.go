@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func Contains[T comparable](list []T, item T) bool {
 	for _, element := range list {
@@ -22,6 +25,10 @@ func Apply[T any](values []T, operation func(T) T) []T {
 		results[i] = operation(v)
 	}
 	return results
+}
+
+func Apply2[T any](values []T, operation func(...T) T) T {
+	return operation(values...)
 }
 
 func main() {
@@ -46,4 +53,10 @@ func main() {
 		return x * 2
 	}
 	fmt.Println(Apply(numbers, double)) // return  [2, 4, 6, 8, 10]
+
+	concat := func(parts ...string) string {
+		return strings.Join(parts, " ")
+	}
+
+	fmt.Println(Apply2(words, concat))
 }
