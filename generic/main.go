@@ -58,5 +58,5 @@ func main() {
 		return strings.Join(parts, " ")
 	}
 
-	fmt.Println(Apply2(words, concat))
+	fmt.Println(Apply2(words, concat)) // return apple banana cherry
 }
