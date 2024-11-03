@@ -16,6 +16,14 @@ func KeyExists[K comparable, V any](m map[K]V, key K) bool {
 	return exists
 }
 
+func Apply[T any](values []T, operation func(T) T) []T {
+	results := make([]T, len(values))
+	for i, v := range values {
+		results[i] = operation(v)
+	}
+	return results
+}
+
 func main() {
 
 	numbers := []int{1, 2, 3, 4, 5}
@@ -33,4 +41,9 @@ func main() {
 
 	fmt.Println(KeyExists(intMap, "age"))   // return true
 	fmt.Println(KeyExists(intMap, "month")) // return false
+
+	double := func(x int) int {
+		return x * 2
+	}
+	fmt.Println(Apply(numbers, double)) // return  [2, 4, 6, 8, 10]
 }
