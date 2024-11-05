@@ -1,5 +1,5 @@
 ## k6
-this folder about load test and stress test with k5
+this folder about load test and stress test with k6
 
 
 ```bash
